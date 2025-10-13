@@ -1,0 +1,313 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #89f7fe, #66a6ff);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  transition: background 0.4s ease, color 0.4s ease;
+}
+
+body.dark {
+  background: linear-gradient(135deg, #1f1f1f, #3b3b3b);
+  color: #eee;
+}
+
+/* ---------- Toggle de tema ---------- */
+.theme-toggle {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+}
+
+.theme-toggle button {
+  border: none;
+  background: linear-gradient(90deg, #007BFF, #00c6ff);
+  color: white;
+  padding: 10px 14px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.1rem;
+  box-shadow: 0 3px 10px rgba(0, 123, 255, 0.4);
+  transition: all 0.3s ease;
+}
+
+.theme-toggle button:hover {
+  transform: rotate(15deg) scale(1.1);
+}
+
+/* ---------- Contenedor principal ---------- */
+.container {
+  background-color: #ffffffee;
+  padding: 40px 30px;
+  border-radius: 24px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+  max-width: 520px;
+  width: 100%;
+  text-align: center;
+  transition: transform 0.3s ease, background 0.3s ease, color 0.3s ease;
+}
+
+body.dark .container {
+  background-color: #2b2b2bdd;
+  box-shadow: 0 8px 30px rgba(255, 255, 255, 0.05);
+}
+
+.container:hover {
+  transform: translateY(-3px);
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 25px;
+  color: #007BFF;
+}
+
+body.dark h1 {
+  color: #66a6ff;
+}
+
+/* ---------- Caja de subida ---------- */
+#dropZone {
+  border: 2px dashed #007BFF;
+  padding: 25px;
+  border-radius: 16px;
+  margin-bottom: 15px;
+  cursor: pointer;
+  color: #007BFF;
+  background: #f7f9ff;
+  transition: all 0.3s ease;
+}
+
+#dropZone.hover {
+  background-color: #007BFF;
+  color: white;
+  transform: scale(1.02);
+}
+
+body.dark #dropZone {
+  background: #2e2e2e;
+  border-color: #66a6ff;
+  color: #66a6ff;
+}
+
+/* ---------- Lista de archivos seleccionados ---------- */
+.file-list {
+  margin-top: 12px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.file-item {
+  background: #f3f5ff;
+  border-radius: 10px;
+  padding: 10px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  animation: fadeIn 0.3s ease;
+}
+
+body.dark .file-item {
+  background: #3b3b3b;
+}
+
+.file-item i {
+  color: #007BFF;
+  font-size: 1.3rem;
+}
+
+.file-item span {
+  flex-grow: 1;
+  font-weight: 500;
+  word-break: break-word;
+}
+
+.remove-file {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: transform 0.2s ease;
+}
+
+.remove-file:hover {
+  transform: scale(1.2);
+  color: #dc3545;
+}
+
+/* ---------- Formularios ---------- */
+form label {
+  display: block;
+  margin-top: 15px;
+  font-weight: 600;
+  text-align: left;
+}
+
+form input,
+form select {
+  width: 100%;
+  padding: 12px;
+  margin-top: 6px;
+  border-radius: 12px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  background: #f9f9f9;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+form input:focus,
+form select:focus {
+  border-color: #007BFF;
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
+  outline: none;
+}
+
+/* ---------- Botón principal ---------- */
+button {
+  width: 100%;
+  padding: 14px;
+  margin-top: 25px;
+  border: none;
+  border-radius: 14px;
+  background: linear-gradient(90deg, #007BFF, #00c6ff);
+  color: white;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background: linear-gradient(90deg, #0056b3, #009acd);
+  transform: scale(1.02);
+}
+
+button:disabled {
+  background: #aaa;
+  cursor: not-allowed;
+}
+
+/* ---------- Barra de progreso ---------- */
+.progress-container {
+  width: 100%;
+  background-color: #eee;
+  border-radius: 12px;
+  margin-top: 15px;
+  display: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 20px;
+  width: 0%;
+  background: linear-gradient(90deg, #007BFF, #00c6ff);
+  border-radius: 12px;
+  transition: width 0.3s ease;
+}
+
+#progressText {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  font-weight: bold;
+  font-size: 0.9rem;
+  color: white;
+}
+
+/* ---------- Toast ---------- */
+.toast {
+  margin-top: 15px;
+  font-weight: bold;
+  min-height: 1.2em;
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.toast.success {
+  color: #28a745;
+}
+
+.toast.error {
+  color: #dc3545;
+}
+
+/* ---------- Historial ---------- */
+.history-list {
+  list-style: none;
+  margin-top: 15px;
+  text-align: left;
+}
+
+.history-list li {
+  padding: 10px 14px;
+  border-radius: 10px;
+  background-color: #f1f1f1;
+  margin-bottom: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background 0.3s ease;
+}
+
+body.dark .history-list li {
+  background-color: #444;
+  color: #eee;
+}
+
+.history-list li:hover {
+  background-color: #e0ecff;
+}
+
+.history-list button {
+  margin-left: 10px;
+  padding: 6px 10px;
+  font-size: 0.9rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.history-list button:hover {
+  background-color: #007BFF;
+  color: white;
+}
+
+.file-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.file-icon {
+  font-size: 1.3rem;
+}
+
+.file-name {
+  font-weight: 500;
+}
+
+/* ---------- Animaciones ---------- */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
